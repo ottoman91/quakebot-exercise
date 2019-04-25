@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{{title}}</title>
+</head>
+<body> 
+    <h1>
+        {{title}}
+    </h1>
+   <p>
+    There were {{num_quakes}} in the last 24 hours, including {{large_quakes_count}} of magnitude 5.0 or greater.
+   </p> 
+    <p>
+    The previous 24-hour period had {{num_large_quakes_yesterday}} large earthquakes, {% if num_large_quakes_yesterday|int >large_quakes_count|int %} {{num_large_quakes_yesterday-large_quakes_count}} more.{% elif num_large_quakes_yesterday|int < large_quakes_count|int %}{{large_quakes_count-num_large_quakes_yesterday}} less{% endif %} than the current 24 hour period.
+   </p> 
+
+   <p>
+    The five largest quakes were:
+   </p>
+    <ul id="navigation"> 
+      <li> {{large_quakes[0]['properties']['place']}},({{large_quakes[0]['properties']['mag']}})</li>
+      <li> {{large_quakes[1]['properties']['place']}},({{large_quakes[1]['properties']['mag']}})</li>
+      <li> {{large_quakes[2]['properties']['place']}},({{large_quakes[2]['properties']['mag']}})</li>
+      <li> {{large_quakes[3]['properties']['place']}},({{large_quakes[3]['properties']['mag']}})</li>
+      <li> {{large_quakes[4]['properties']['place']}},({{large_quakes[4]['properties']['mag']}})</li>
+    </ul>
+
+    <h1>My Webpage</h1>
+   
+</body>
+</html>
